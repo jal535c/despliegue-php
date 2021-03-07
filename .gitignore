@@ -1,2 +1,5 @@
 #Ignora este fichero para el control de versiones
 phpDocumentor.phar
+
+#Ignora la carpeta cache de phpdoc
+.phpdoc/
