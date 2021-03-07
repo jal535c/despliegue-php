@@ -1,22 +1,45 @@
 <?php 
-
+  
+  /**
+   * Database
+   * 
+   * Clase que gestiona la conexion a la base de datos
+   */
   class Database 
   {
+    
     const HOST = "localhost";
     const USER = "root";
     const PASS = "";
     const DBNAME = "inventariomvc";
 
+    /**
+     * @var null|\Database $instancia - Instancia de esta clase
+     * @var \mysqli $sqli - Instancia de la libreria mysqli para realizar la conexion
+     * @var mixed $res - Guarda el resultado de una consulta
+     */
     private static ?Database $instancia = null;
     private $sqli;    
     private $res;     
 
-
+    
+    /**
+     * __clone
+     *
+     * Metodo vacio para evitar el clonado de esta clase
+     * @return void
+     */
     private function __clone() {   
 
     }
 
-
+    
+    /**
+     * __construct
+     *
+     * Constructor privado para evitar que se llame desde fuera (patron singleton)
+     * @return void
+     */
     private function __construct()    
     {
       $this->sqli = new mysqli(self::HOST, self::USER, self::PASS, self::DBNAME);
@@ -25,7 +48,14 @@
         die("error de conexion");
     }
 
-
+    
+    /**
+     * getDatabase
+     * 
+     * Implementa el patron singlenton para tener siempre una unica instancia de esta clase
+     *
+     * @return Database
+     */
     public static function getDatabase():Database
     {
       if (self::$instancia==null)       
@@ -37,7 +67,7 @@
 
     /**
      *  Usa la conexion para realizar una consulta a la base de datos
-     *  @param string $sql
+     *  @param string $sql - Sentencia sql
      *  @return bool 
      */
     public function consulta(string $sql):bool   
@@ -53,18 +83,20 @@
 
 
     /**
-     * Extrae del resultset una fila en forma de objeto
-      @param string $class
-      @return Object
-    */
+     * Extrae del resultado obtenido (resultset) una fila en forma de objeto
+     * @param string $class - Tipo de la Clase que quiero obtener
+     * @return Object
+     */
     public function getObjeto(string $class="StdClass"):?Object  
     {
       return $this->res->fetch_object($class);
     }
 
-
+         
     /**
-     * Devuelve el id (auto_increment) del ultimo insertado
+     * getUltimoId
+     *
+     * @return int - Devuelve el id (auto_increment) del ultimo insertado
      */
     public function getUltimoId():int 
     {
