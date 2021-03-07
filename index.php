@@ -1,18 +1,34 @@
-<?php
+<?php  
 
-  //define('BASEDIR', __DIR__);
-
+  /**
+   * Crea una constante global
+   * 
+   * @param string $name - El nombre de la constante
+   * @param mixed $value - El valor de la constante 
+   */
   define('APP', "inventario2");   //nombre de mi aplicacion, la tomo como base, localhost no es necesario
 
-  //Controlador frontal
-  
+
+  /**
+   * Controlador Frontal
+   * 
+   * Recibe los parametros de la ruta introducida por url
+   * 
+   * @var string $cop - Código de operación
+   * @var string $con - Nombre del controlador
+   */
   $cop = $_GET["cop"]??"mostrar";
   $con = $_GET["con"]??"Puesto";
-
+  
+  /**
+   * @var string $nombre - Nombre del controlador que será requerido
+   */
   $nombre = "{$con}Controller";   
-
   require_once "controladores/{$nombre}.php";  
 
+  /**
+   * @var $controlador - Instancia del controlador
+   */
   $controlador = new $nombre;
 
   if (!method_exists($controlador, $cop))    

@@ -2,10 +2,18 @@
 
   require_once "vendor/autoload.php";
 
-
+  
+  /**
+   * TwigController
+   */
   class TwigController
   {
-
+    
+    /**
+     * twig
+     *
+     * @var mixed
+     */
     private  $twig;    //para k no sea protegida, encapsulo y uso el metodo render de aqui
 
 
@@ -21,8 +29,14 @@
     }
 
 
+        
     /**
-     * Encapsula el metodo render de twig
+     * render
+     * Encapsula el metodo render de la clase Twig
+     *
+     * @param  mixed $ruta
+     * @param  mixed $params
+     * @return void
      */
     public function render(string $ruta, array $params=[]) 
     {
