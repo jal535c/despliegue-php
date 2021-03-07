@@ -1,12 +1,12 @@
 <?php  
 
   /**
-   * Crea una constante global
+   * Crea una constante global para el nombre de la aplicación
    * 
    * @param string $name - El nombre de la constante
    * @param mixed $value - El valor de la constante 
    */
-  define('APP', "inventario2");   //nombre de mi aplicacion, la tomo como base, localhost no es necesario
+  define('APP', "inventario2");
 
 
   /**
