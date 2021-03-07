@@ -1,0 +1,28 @@
+{% extends "plantilla.php.twig" %}
+
+{% block contenido %}  
+  <form action="/{{ app }}/index.php" method="get"> 
+    <input type="hidden" name="con" value="Puesto" />
+    <input type="hidden" name="cop" value="aniadir" />
+    
+    <label for="nom">Nombre</label>
+    <input class="form-control" type="text" name="nom" required />
+    <br/>
+
+    <label for="ubi">Ubicación</label>
+    <input class="form-control" type="text" name="ubi" required />
+    <br/>
+
+    <label for="pla">Planta</label>
+    <input class="form-control" type="number" name="pla" min="1" />
+
+    <label for="num">Número</label>
+    <input class="form-control" type="number" name="num" min="1" />
+
+    <br/>
+
+    <button class="btn btn-primary">Guardar</button>
+    <a class="btn btn-danger" href="/{{ app }}/index.php">Volver</a>
+  </form>
+{% endblock %}
+  

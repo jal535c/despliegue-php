@@ -1,0 +1,36 @@
+{% extends "plantilla.php.twig" %}
+
+{% block contenido %}
+  {% if (puesto==null) %}
+
+    <div class="alert alert-primary">No se ha encontrado el puesto</div>
+
+  {% else %}
+
+    <form action="/{{ app }}/index.php" method="get">
+      <input type="hidden" name="con" value="Puesto" />
+      <input type="hidden" name="cop" value="editar" />
+      <input type="hidden" name="id" value="{{ puesto.idPue }}" />
+
+      <label for="nom">Nombre</label>
+      <input class="form-control" type="text" name="nom" value="{{ puesto.nombre }}" required />
+      <br />
+
+      <label for="ubi">Ubicación</label>
+      <input class="form-control" type="text" name="ubi" value="{{ puesto.ubicacion }}" required />
+      <br />
+
+      <label for="pla">Planta</label>
+      <input class="form-control" type="number" name="pla" value="{{ puesto.planta }}" min="1" />
+
+      <label for="num">Número</label>
+      <input class="form-control" type="number" name="num" value="{{ puesto.numero }}" min="1" />
+
+      <br />
+
+      <button class="btn btn-primary">Guardar</button>
+      <a class="btn btn-danger" href="/{{ app }}/index.php">Volver</a>
+    </form>
+    
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,14 @@
+RewriteEngine On
+
+RewriteRule ^puestos$                   index.php?cop=mostrar&con=Puesto      [L]
+RewriteRule ^puestos/aniadir$           index.php?cop=aniadir&con=Puesto      [L]
+RewriteRule ^puestos/insertar$          index.php?cop=insertar&con=Puesto     [L]
+RewriteRule ^puestos/info/([0-9]+)$     index.php?cop=info&con=Puesto&id=$1   [L]
+RewriteRule ^puestos/editar/([0-9]+)$   index.php?cop=editar&con=Puesto&id=$1 [L]
+RewriteRule ^puestos/borrar/([0-9]+)$   index.php?cop=borrar&con=Puesto&id=$1 [L]
+
+RewriteRule ^items$                             index.php?cop=mostrar&con=Item                [L]
+RewriteRule ^items/insertar$                    index.php?cop=insertar&con=Item               [L]
+RewriteRule ^items/aniadir/([0-9]+)$            index.php?cop=aniadir&con=Item&idp=$1         [L]
+RewriteRule ^items/editar/([0-9]+)/([0-9]+)$    index.php?cop=editar&con=Item&idi=$1&idp=$2   [L]
+RewriteRule ^items/borrar/([0-9]+)/([0-9]+)$    index.php?cop=borrar&con=Item&idi=$1&idp=$2   [L]

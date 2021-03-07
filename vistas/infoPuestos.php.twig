@@ -1,0 +1,47 @@
+{% extends "plantilla.php.twig" %}
+
+{% block contenido %}
+  <table class="table w-25">
+    <tr>
+      <td>Ubicación:</td><td>{{ puesto.ubicacion }}</td>
+    </tr>
+    <tr>
+      <td>Planta:</td><td>{{ puesto.planta }}</td>
+    </tr>
+    <tr>
+      <td>Número:</td><td>{{ puesto.numero }}</td>
+    </tr>
+  </table>
+
+  <br>
+  <p><a href="/{{ app }}/items/aniadir/{{ puesto.idPue }}" class="btn btn-dark">Añadir item</a></p>
+  
+  <table class="table ">
+    <thead>
+      <tr>        
+        <th scope="col">Producto</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Alta</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in items %}
+      <tr>      
+        <td>{{ i.item }}</td>
+        <td>{{ i.stock }}</td>
+        <td>{{ i.alta }}</td>
+        <td><a href="/{{ app }}/items/editar/{{ i.idIte }}/{{ puesto.idPue }}" class="btn btn-primary">Editar</a></td>
+        <td><a href="/{{ app }}/items/borrar/{{ i.idIte }}/{{ puesto.idPue }}" class="btn btn-primary">Borrar</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="row">
+    <div class="col">
+      <a href="/{{ app }}/index.php" class="btn btn-danger">Volver atrás</a>
+    </div>
+  </div>
+{% endblock %}

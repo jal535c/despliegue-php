@@ -1,0 +1,25 @@
+{% extends "plantilla.php.twig" %}
+
+{% block contenido %}  
+  <form action="/{{ app }}/index.php" method="get"> 
+    <input type="hidden" name="con" value="Item" />
+    <input type="hidden" name="cop" value="aniadir" />
+    <input type="hidden" name="idp" value="{{ puesto.idPue }}" />
+    
+    <label for="nom">Nombre del Item</label>
+    <input class="form-control" type="text" name="nom" required />
+    <br/>
+
+    <label for="sto">Stock</label>
+    <input class="form-control" type="number" name="sto" min="1" required />
+    <br />
+
+    <label for="fec">Fecha de alta</label>
+    <input class="form-control" type="date" name="fec" value="{{ "now"|date("Y-m-d") }}" />   
+    <br/>
+
+    <button class="btn btn-primary">Guardar</button>
+    <a class="btn btn-danger" href="/{{ app }}/puestos/info/{{ puesto.idPue }}">Volver</a>
+  </form>
+{% endblock %}
+  

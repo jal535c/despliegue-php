@@ -1,0 +1,24 @@
+{% extends "plantilla.php.twig" %}
+
+{% block contenido %}
+  <p><a href="./puestos/aniadir" class="btn btn-dark">Añadir puesto</a></p>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre del Puesto:</th>        
+        <th>Accion:</th>
+        <th>Accion:</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in puestos %}
+      <tr>
+        <td><a href="./puestos/info/{{ i.idPue }}">{{ i.nombre }}</a></td>      
+        <td><a href="./puestos/editar/{{ i.idPue }}" class="btn btn-primary">Editar</a></td>
+        <td><a href="./puestos/borrar/{{ i.idPue }}" class="btn btn-warning">Borrar</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

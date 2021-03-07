@@ -1,0 +1,33 @@
+{% extends "plantilla.php.twig" %}
+
+{% block contenido %}
+  {% if (item==null) %}
+
+    <div class="alert alert-primary">No se ha encontrado el item</div>
+    
+  {% else %}
+
+    <form action="/{{ app }}/index.php" method="get">
+      <input type="hidden" name="con" value="Item" />
+      <input type="hidden" name="cop" value="editar" />
+      <input type="hidden" name="idp" value="{{ item.idPue }}" />
+      <input type="hidden" name="idi" value="{{ item.idIte }}" />
+
+      <label for="nom">Nombre del item</label>
+      <input class="form-control" type="text" name="nom" value="{{ item.item }}" required />
+      <br />
+
+      <label for="sto">Stock</label>
+      <input class="form-control" type="number" name="sto" value="{{ item.stock }}" required />
+      <br />
+
+      <label for="fec">Fecha de alta</label>
+      <input class="form-control" type="date" name="fec" value="{{ item.alta }}" readonly />
+      <br />
+
+      <button class="btn btn-primary">Guardar</button>
+      <a class="btn btn-danger" href="/{{ app }}/puestos/info/{{ item.idPue }}">Volver</a>
+    </form>
+    
+  {% endif %}
+{% endblock %}
