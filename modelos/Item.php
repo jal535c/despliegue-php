@@ -5,6 +5,13 @@
   class Item
   {
 
+    /**
+     * @var int $idIte - Identificador del item
+     * @var int $idPue - Identificador del puesto
+     * @var string $item - Nombre del item
+     * @var int $stock - Cantidad en stock
+     * @var string $alta - Fecha de alta
+     */
     private int $idIte;
     private int $idPue;
     private string $item;
@@ -112,9 +119,12 @@
       return $this;
     }
 
-
+        
     /**
-     * 
+     * update
+     *
+     * Actualiza de la base de datos un item
+     * @return void
      */
     public function update()
     {
@@ -126,19 +136,25 @@
       $db->consulta($sql);
     }
 
-
+        
     /**
-     * 
+     * delete
+     *
+     * Borra de la base de datos un item
+     * @return void
      */
     public function delete()
     {
       $db = Database::getDatabase();
       $db->consulta("DELETE FROM item WHERE idIte= {$this->idIte};");      
     }    
-
     
+       
     /**
-     * 
+     * save
+     *
+     * Inserta en la base de datos un item
+     * @return void
      */
     public function save()
     {
@@ -152,13 +168,14 @@
         die("error: $sql");
       }
     }
-
-
-    
-
-
+ 
+        
     /**
-     * 
+     * findById
+     *
+     * Busca en la base de datos un item
+     * @param  int $idi - identificador del item
+     * @return null|Item - Devuelve el Item, o null si no lo encuentra
      */
     public static function findById(int $idi):?Item
     {
@@ -167,13 +184,14 @@
 
       return $db->getObjeto("Item");
     }
-
-
-    
-
-
+  
+        
     /**
-     * 
+     * findAllByPuesto
+     *
+     * Busca en la base de datos todos los items de un determinado puesto
+     * @param  mixed $idp - Identificador del puesto
+     * @return array - Array con todos los items
      */
     public static function findAllByPuesto(int $idp):array 
     {

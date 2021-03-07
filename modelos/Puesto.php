@@ -1,10 +1,22 @@
 <?php
 
   require_once "libs/Database.php";
-
+  
+  /**
+   * Puesto
+   * 
+   * Clase modelo para la gestion de los puestos
+   */
   class Puesto
   {
 
+    /**
+     * @var null|int $idPue - Identificador del puesto
+     * @var string $nombre - Nombre del puesto
+     * @var string $ubicacion - Ubicación del puesto
+     * @var int $planta - Planta del puesto
+     * @var int $numero - Número del puesto
+     */
     private ?int $idPue = null;    
     private string $nombre;
     private string $ubicacion;
@@ -141,6 +153,7 @@
 
     /**
      * Devuelve un array con todos los puestos
+     * @return
      */
     public static function findAll():array 
     {
@@ -158,8 +171,8 @@
 
     /**
      * Devuelve el puesto indicado, si se encuentra
-     * @param $idp
-     * @return
+     * @param int $idp - Identificador del puesto
+     * @return 
      */
     public static function findById(int $idp):?Puesto 
     {
@@ -168,8 +181,6 @@
 
       return $db->getObjeto("Puesto");
     }
-
-
     
   }
 

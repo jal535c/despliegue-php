@@ -8,6 +8,12 @@
   class Database 
   {
     
+    /**
+     * @var string HOST - Servidor de la base de datos
+     * @var string USER - Nombre de usuario
+     * @var string PASS - Clave de usario 
+     * @var string DBNAME - Nombre de la base de datos
+     */
     const HOST = "localhost";
     const USER = "root";
     const PASS = "";
