@@ -4,14 +4,26 @@
   require_once "modelos/Item.php";
   require_once "controladores/TwigController.php";
 
+    
+  /**
+   * PuestoController
+   * 
+   * Clase controlador para gestionar los puestos
+   */
   class PuestoController extends TwigController
   {
-    
+            
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct()
     {
       parent::__construct("./vistas");
     }
 
+    
     /**
      * Muestra en pantalla un listado con todos los puestos del mercado. 
      * El metodo render devuelve en texto plano el codigo html, el cual vuelco en pantalla
@@ -28,7 +40,7 @@
 
 
     /**
-     * Busca y muestra en pantalla la informacion asociada a un puesto del mercado.
+     * Busca y muestra en pantalla la información asociada a un puesto del mercado.
      */
     public function info()
     {      

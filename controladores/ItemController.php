@@ -4,17 +4,31 @@
   require_once "modelos/Puesto.php";
   require_once "controladores/TwigController.php";
 
+    
+  /**
+   * ItemController
+   * 
+   * Clase controlador para gestionar los items
+   */
   class ItemController extends TwigController
   {
-        
+            
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct()
     {
       parent::__construct("./vistas");
     }
 
-
+        
     /**
-     * 
+     * aniadir
+     *
+     * Método para añadir un item a la base de datos
+     * @return void
      */
     public function aniadir() 
     {
@@ -34,7 +48,7 @@
 
         $item->setItem($_GET["nom"]);
         $item->setStock($_GET["sto"]);
-        $item->setAlta(date("Y-m-d", strtotime($_GET["fec"])));    //si creo uno, le puedo poner la fecha que quiera? o debe ser hoy
+        $item->setAlta(date("Y-m-d", strtotime($_GET["fec"])));
         
         $item->save();
         
@@ -42,9 +56,12 @@
       endif;
     }
 
-
+        
     /**
-     * 
+     * editar
+     *
+     * Metodo para editar un item
+     * @return void
      */
     public function editar()
     {
@@ -68,10 +85,14 @@
         header("location: /".APP."/puestos/info/{$puesto->getIdPue()}");
       endif; 
     }
-
-
+    
+         
     /**
+     * borrar
+     *
      * Busca el item, y si existe lo borra
+     * 
+     * @return void
      */
     public function borrar()
     {  
@@ -80,7 +101,6 @@
       if (!is_null($item)) 
         $item->delete();
       
-      //se queda en la misma pagina, NOOOO
       header("location: /".APP."/puestos/info/{$item->getIdPue()}");
     }
   }
